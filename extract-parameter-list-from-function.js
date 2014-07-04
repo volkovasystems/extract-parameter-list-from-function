@@ -18,16 +18,29 @@
 	@include:
 	@end-include
 */
-var extractParameterListFromFunction = function extractParameterListFromFunction( rawFunctionString ){
+var extractParameterListFromFunction = function extractParameterListFromFunction( method ){
 	/*:
 		@meta-configuration:
 			{
-				"rawFunctionString:required": "string"
+				"method:required": "function"
 			}
 		@end-meta-configuration
 	*/
 
+    var rawFunctionString = method.toString( );
 
+    if( parameterPattern.test( rawFunctionString ) ){
+        var parameterString = rawFunctionString.match( parameterPattern );
+
+        var parameterList = parameterString.split( /,\s*/ );
+
+        return parameterList;
+
+    }else{
+        return [ ];
+    }
 };
+
+var parameterPattern = /function\s+[a-z][a-zA-Z]+\(\s+(.+?)?\s+\)/g;
 
 ( module || { } ).exports = extractParameterListFromFunction;

@@ -53,8 +53,8 @@ var extractParameterListFromFunction = function extractParameterListFromFunction
 
     var rawFunctionString = method.toString( );
 
-    if( parameterPattern.test( rawFunctionString ) ){
-        var parameterString = rawFunctionString.match( parameterPattern );
+    if( PARAMETER_PATTERN.test( rawFunctionString ) ){
+        var parameterString = rawFunctionString.match( PARAMETER_PATTERN );
 
         var parameterList = parameterString.split( /,\s*/ );
 
@@ -65,6 +65,6 @@ var extractParameterListFromFunction = function extractParameterListFromFunction
     }
 };
 
-var parameterPattern = /function\s+[a-z][a-zA-Z]+\(\s+(.+?)?\s+\)/g;
+const PARAMETER_PATTERN = /^function\s+[a-z][a-zA-Z]+\s*\(\s*(.+?)?\s*\)/g;
 
-( module || { } ).exports = extractParameterListFromFunction;
+module.exports = extractParameterListFromFunction;

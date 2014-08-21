@@ -51,20 +51,20 @@ var extractParameterListFromFunction = function extractParameterListFromFunction
 		@end-meta-configuration
 	*/
 
-    var rawFunctionString = method.toString( );
+	var rawFunctionString = method.toString( );
 
-    if( PARAMETER_PATTERN.test( rawFunctionString ) ){
-        var parameterString = rawFunctionString.match( PARAMETER_PATTERN )[ 1 ];
+	if( PARAMETER_PATTERN.test( rawFunctionString ) ){
+		var parameterString = rawFunctionString.match( PARAMETER_PATTERN )[ 1 ];
 
-        var parameterList = parameterString.split( /,\s*/ );
+		var parameterList = parameterString.split( /,\s*/ );
 
-        return parameterList;
+		return parameterList;
 
-    }else{
-        return [ ];
-    }
+	}else{
+		return [ ];
+	}
 };
 
-const PARAMETER_PATTERN = /^function\s+[a-z][a-zA-Z]+\s*\(\s*(.+?)?\s*\)/g;
+const PARAMETER_PATTERN = /^function\s+[a-z][a-zA-Z0-9]*\s*\(\s*(.+?)?\s*\)/;
 
 module.exports = extractParameterListFromFunction;

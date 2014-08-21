@@ -54,7 +54,7 @@ var extractParameterListFromFunction = function extractParameterListFromFunction
     var rawFunctionString = method.toString( );
 
     if( PARAMETER_PATTERN.test( rawFunctionString ) ){
-        var parameterString = rawFunctionString.match( PARAMETER_PATTERN );
+        var parameterString = rawFunctionString.match( PARAMETER_PATTERN )[ 1 ];
 
         var parameterList = parameterString.split( /,\s*/ );
 
